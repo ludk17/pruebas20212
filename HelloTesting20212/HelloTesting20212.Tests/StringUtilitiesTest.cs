@@ -131,6 +131,108 @@ namespace HelloTesting20212.Tests
             Assert.AreEqual(new string[] { "hugo", "pedro" }, utils.GetPalabras());
         }
 
+        [Test]
+        public void SumStringsCaso01()
+        {
+            var utils = new StringUtilities();
+            var data = "1,3,5,6,7";
+            var result = utils.SumString(data);
+
+            Assert.AreEqual(22, result);
+        }
+
+        [Test]
+        public void SumStringsCaso02()
+        {
+            var utils = new StringUtilities();
+            var data = "1,4";
+            var result = utils.SumString(data);
+
+            Assert.AreEqual(5, result);
+        }
+
+        [Test]
+        public void SumStringsCaso03()
+        {
+            var utils = new StringUtilities();
+            var data = "";
+            var result = utils.SumString(data);
+
+            Assert.AreEqual(0, result);
+        }
+
+        [Test]
+        public void SumStringsCaso04()
+        {
+            var utils = new StringUtilities();
+            var data = "5,7,8,9";
+            var result = utils.SumString(data);
+
+            Assert.AreEqual(29, result);
+        }
+
+        [Test]
+        public void SumStringsCaso05()
+        {
+            var utils = new StringUtilities();
+            var data = "4,4";
+            var result = utils.SumString(data);
+
+            Assert.AreEqual(8, result);
+        }
+
+
+        [Test]
+        public void SonAnagramaCaso01()
+        {
+            var utils = new StringUtilities();
+            var data1 = "roma";
+            var data2 = "omar";
+
+            var result = utils.SonAnagrama(data1, data2);
+
+            //Assert.AreEqual(false, result);
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void SonAnagramaCaso02()
+        {
+            var utils = new StringUtilities();
+            var data1 = "roma";
+            var data2 = "aroma";
+
+            var result = utils.SonAnagrama(data1, data2);
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void SonAnagramaCaso03()
+        {
+            var utils = new StringUtilities();
+            var data1 = "trama";
+            var data2 = "rrama";
+
+            var result = utils.SonAnagrama(data1, data2);
+
+            //Assert.AreEqual(false, result);
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void SonAnagramaCaso04()
+        {
+            var utils = new StringUtilities();
+            var data1 = "trama";
+            var data2 = "marta";
+
+            var result = utils.SonAnagrama(data1, data2);
+
+            //Assert.AreEqual(false, result);
+            Assert.IsTrue(result);
+        }
+
 
     }
 }

@@ -46,5 +46,21 @@ namespace HelloWorldTesting20212
         {
             return string.Join(" ", arr);
         }
+
+
+        public int SumString(string numbers)
+        {
+            if (numbers == "")
+                return 0;
+
+            return numbers.Split(',').Select(o => int.Parse(o)).Sum();
+        }
+
+        public bool SonAnagrama(string data1, string data2)
+        {
+            var a = new String(data1.ToCharArray().OrderBy(o => o).ToArray());
+            var b = new String(data2.ToCharArray().OrderBy(o => o).ToArray());
+            return a == b;
+        }
     }
 }
