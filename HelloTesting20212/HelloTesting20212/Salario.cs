@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace HelloTesting20212
 {
+    public interface ISalario
+    {
+        ITipoDeCambio GetTipoCambio();
+        decimal GetSalarioEnSoles();
+        decimal GetSalarioEnDolares();
+        decimal GetSalarioEnLibras();
+    }
     public class Salario
     {
         private readonly Empleado empleado;
@@ -15,6 +22,11 @@ namespace HelloTesting20212
         {
             this.empleado = empleado;
             this.tipoDeCambio = tipoDeCambio;
+        }
+
+        public ITipoDeCambio GetTipoCambio()
+        {
+            return tipoDeCambio;
         }
 
         public decimal GetSalarioEnSoles()

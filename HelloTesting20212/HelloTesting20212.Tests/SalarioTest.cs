@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Moq;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,34 +8,6 @@ using System.Threading.Tasks;
 
 namespace HelloTesting20212.Tests
 {
-    public class TipoDeCambioFake : ITipoDeCambio
-    {
-        public decimal GetTipoDeCambioDolarActual()
-        {
-            return 4.11m;
-        }
-
-        public decimal GetTipoDeCambioEuroActual()
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal GetTipoDeCambioLibraActual()
-        {
-            return 6.1m;
-        }
-
-        public decimal GetTipoDeCambioPesoArgentinoActual()
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal GetTipoDeCambioPesoMexicanoActual()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
     public class SalarioTest
     {
         [Test]
@@ -49,7 +22,11 @@ namespace HelloTesting20212.Tests
         public void SalarioDolaresCaso01()
         {
             var e = new Empleado { Id = 1, Nombre = "Luis", SalarioSoles = 1000 };
-            var s = new Salario(e, new TipoDeCambioFake());
+            
+            var tcmock = new Mock<ITipoDeCambio>();
+            tcmock.Setup(o => o.GetTipoDeCambioDolarActual()).Returns(4.11m);
+
+            var s = new Salario(e, tcmock.Object);
             Assert.AreEqual(4110m, s.GetSalarioEnDolares());
         }
 
@@ -57,7 +34,11 @@ namespace HelloTesting20212.Tests
         public void SalarioLibrasCaso01()
         {
             var e = new Empleado { Id = 1, Nombre = "Luis", SalarioSoles = 1000 };
-            var s = new Salario(e, new TipoDeCambioFake());
+
+            var tcmock = new Mock<ITipoDeCambio>();
+            tcmock.Setup(o => o.GetTipoDeCambioLibraActual()).Returns(6.1m);
+
+            var s = new Salario(e, tcmock.Object);
             Assert.AreEqual(6100m, s.GetSalarioEnLibras());
         }
     }

@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace HelloTesting20212
 {
-    public class YanKenPoGame
+    public interface IYanKenPoGame
+    {
+        void SetJugador1(Jugador jugador);
+        void SetJugador2(Jugador jugador);
+        Jugador Ganador();
+    }
+
+    public class YanKenPoGame: IYanKenPoGame
     {
         private Jugador jugador1;
         private Jugador jugador2;
