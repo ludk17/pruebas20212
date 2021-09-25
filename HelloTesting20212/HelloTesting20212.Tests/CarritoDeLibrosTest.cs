@@ -122,5 +122,40 @@ namespace HelloTesting20212.Tests
             var result = carrito.PrecioTotal();
             Assert.AreEqual(61.5, result);
         }
+
+        CarritoDeLibros _carrito;
+        
+        [SetUp]
+        public void Setup()
+        {
+            _carrito = new CarritoDeLibros(new List<Libro> { });
+        }
+
+
+        [TearDown]
+        public void TearDown()
+        {
+            _carrito = new CarritoDeLibros(new List<Libro> { });
+        }
+
+
+        [Test]
+        public void Caso10()
+        {
+            _carrito.AddLibro(HARRY_POTTER_1);
+
+            var result = _carrito.GetLibros();
+            Assert.AreEqual(1, result.Count);
+        }
+
+        [Test]
+        public void Caso11()
+        {
+            _carrito.AddLibro(HARRY_POTTER_1);
+            _carrito.AddLibro(HARRY_POTTER_2);
+
+            var result = _carrito.GetLibros();
+            Assert.AreEqual(2, result.Count);
+        }
     }
 }

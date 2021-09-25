@@ -1,0 +1,24 @@
+﻿@model List<User>
+
+@if(TempData["MessageSuccess"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["MessageSuccess"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Username</td>
+            </tr>
+        }
+    </tbody>
+</table>

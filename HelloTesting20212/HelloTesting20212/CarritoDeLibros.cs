@@ -36,5 +36,10 @@ namespace HelloWorldTesting20212
         {
             //guardar en base de datos;
         }
+
+        public List<Libro> GetLibros()
+        {
+            return libros;
+        }
     }
 }
