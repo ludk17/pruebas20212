@@ -8,13 +8,9 @@ using System.Threading.Tasks;
 
 namespace HelloWeb.Web.Db
 {
-    public interface ICalidadAppContext {
-        DbSet<User> Users { get; set; }
-    };
-
-    public class CalidadAppContext: DbContext, ICalidadAppContext
-{
-        public DbSet<User> Users { get; set; }
+    public class CalidadAppContext: DbContext
+    {
+        public virtual DbSet<User> Users { get; set; }
 
         public CalidadAppContext(DbContextOptions<CalidadAppContext> options)
             : base(options) { }

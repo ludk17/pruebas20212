@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 using HelloWeb.Web.Repositories;
+using HelloWeb.Web.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,12 @@ namespace HelloWeb.Web.Controllers
     public class AuthController : Controller
     {
         private readonly IUserRepository repository;
+        private readonly IAuthService auth;
 
-        public AuthController(IUserRepository repository)
+        public AuthController(IUserRepository repository, IAuthService auth)
         {
             this.repository = repository;
+            this.auth = auth;
         }
 
         [HttpGet]
@@ -32,11 +35,8 @@ namespace HelloWeb.Web.Controllers
                     new Claim(ClaimTypes.Name, username)
                 };
 
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                auth.Login(claims);
 
-                HttpContext.SignInAsync(claimsPrincipal);
-                
                 return RedirectToAction("Index", "Home");
             }
 

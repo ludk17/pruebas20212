@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HelloWeb.Web.Db;
 using HelloWeb.Web.Repositories;
+using HelloWeb.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,7 @@ namespace HelloWeb.Web
             );
 
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IAuthService, AuthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
