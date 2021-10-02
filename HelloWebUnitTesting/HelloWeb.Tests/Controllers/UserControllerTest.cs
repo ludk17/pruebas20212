@@ -28,7 +28,7 @@ namespace HelloWeb.Tests.Controllers
         public void TestIndexIsOkCase01()
         {            
             
-            repository.Setup(o => o.GetAll()).Returns(new List<User>());
+            repository.Setup(o => o.GetAll(It.IsAny<bool?>())).Returns(new List<User>());
 
             var controller = new UserController(repository.Object);
             var view = controller.Index() as ViewResult;

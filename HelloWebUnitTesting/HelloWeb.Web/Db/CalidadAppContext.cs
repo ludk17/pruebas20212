@@ -12,6 +12,8 @@ namespace HelloWeb.Web.Db
     {
         public virtual DbSet<User> Users { get; set; }
 
+        public virtual DbSet<Employee> Employees { get; set; }
+
         public CalidadAppContext(DbContextOptions<CalidadAppContext> options)
             : base(options) { }
 
